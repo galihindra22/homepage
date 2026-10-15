@@ -1,143 +1,455 @@
-*{
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@400;500&display=swap");
+
+/* ---------- Base ---------- */
+
+:root {
+    --teal: #0891b2;
+    --light-blue: #4a9fd3;
+    --text: #333;
+    --white: #fff;
+    --card-shadow: 0 2px 6px rgb(0 0 0 / 0.2);
+
+    --font-heading: "Playfair Display", serif;
+    --font-body: "Roboto", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
     margin: 0;
 }
 
-.hero-bg{
-    position: absolute;
-    inset: 0;
-    background-color: #00838f;
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-    z-index: -1;
+body {
+    font-family: var(--font-body);
+    color: var(--text);
+    line-height: 1.5;
 }
+
+img,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+a {
+    color: inherit;
+}
+
+.social-links svg *,
+.card-links svg *,
+.footer-socials svg * {
+    fill: currentColor;
+    transition: fill 0.2s;
+}
+
+.social-links a,
+.card-links a,
+.footer-socials a {
+    color: #181616;
+}
+
+/* white backgrounds: light blue */
+.social-links a:hover,
+.social-links a:focus-visible,
+.card-links a:hover,
+.card-links a:focus-visible {
+    color: var(--light-blue);
+}
+
+/* teal background: white */
+.footer-socials a:hover,
+.footer-socials a:focus-visible {
+    color: var(--white);
+}
+
+/* ---------- Hero ---------- */
+
 .hero {
-    display: grid;
-    grid-template-columns: 400px 2fr;
-    padding: 3rem 6rem;
-    align-items: center;
+    position: relative;
+    padding: 1rem 1rem 2rem;
+}
+
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20rem;
+    background-color: var(--teal);
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+    z-index: -1;
 }
 
 .hero-image-container {
     position: relative;
-    width: 100%;
-    background-color: #fff;
+    max-width: 22rem;
+    margin-inline: auto;
+    box-shadow: var(--card-shadow);
 }
 
 .hero-image-container img {
     width: 100%;
-    max-width: 400px;
-    height: auto;
-    display: block;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
 }
 
 .hero-image-container h1 {
     position: absolute;
-    bottom: 0.5rem;
-    transform: translateX(45%);
-    color: #ffffff;
-    font-size: 4rem;
-    white-space: nowrap;
-    margin: 0;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
-    font-weight: 300;
+    left: 1rem;
+    bottom: 1rem;
+    font-size: 4.5rem;
+    color: var(--white);
+    text-shadow: 0 2px 6px rgb(0 0 0 / 0.5);
 }
 
 .about-content {
-    background-color: #ffffff;
-    padding: 2.5rem;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    padding-top: 1.5rem;
+    text-align: center;
 }
 
 .about-content h2 {
-    margin-top: 0;
-    font-size: 2.25rem;
-    color: #1a1a1a;
+    font-size: 2rem;
     margin-bottom: 1rem;
-    font-weight: 300;
 }
 
 .about-content p {
-    color: #555555;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
+    text-align: left;
+    font-size: 1.125rem;
 }
 
 .social-links {
     display: flex;
-    gap: 1.25rem;
-    justify-content: end;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
 }
 
-.social-links a:hover path{
-    fill: #00838f;
+/* ---------- Work ----------- */
+
+.work {
+    padding: 2rem 1rem 4rem;
 }
 
-.work{
-    padding: 3rem 6rem;
+.work h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
 }
 
-.work h2{
-    font-size: 2.25rem;
-    font-weight: 300;
-    margin-bottom: 1rem;
-}
-
-.cards-grid{
+.cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
 }
 
-.card{
-    box-shadow: 0 8px 200px rgba(0, 0, 0, 0.2);
+.card {
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: var(--white);
+    box-shadow: var(--card-shadow);
 }
 
-.card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
-}
-
-.card img{
+.card img {
     width: 100%;
-    height: 200px;
-    background-color: #1a1a1a;
-    display: block;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    background-color: #7f75c9;
 }
 
 .card-content {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    flex-grow: 1;
-}
-
-.card-content p{
-    color: #555555;
+    padding: 1rem 1.25rem 2rem;
 }
 
 .card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 0.5rem;
 }
 
-.card h3 {
-    margin: 0;
-    font-size: 1.2rem;
-    font-weight: 300;
-    color: #1a1a1a;
+.card-header h3 {
+    font-size: 1.125rem;
 }
 
 .card-links {
     display: flex;
-    gap: 1rem;
-    align-items: center;
+    gap: 0.75rem;
 }
 
-.card-links a:hover path {
-    fill: #00838f;
+.card-content p {
+    font-size: 0.875rem;
+}
+
+.card:nth-child(1) img {
+    background-color: #9e1b1b;
+}
+
+.card:nth-child(2) img {
+    background-color: #7f75c9;
+}
+
+.card:nth-child(3) img {
+    background-color: #5d8f4c;
+}
+
+.card:nth-child(4) img {
+    background-color: #c262b3;
+}
+
+.card:nth-child(5) img {
+    background-color: #d68f3b;
+}
+
+.card:nth-child(6) img {
+    background-color: #4a9fd3;
+}
+
+/* ---------- Footer  ---------- */
+
+footer {
+    background-color: var(--teal);
+    color: var(--white);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding-top: 2rem;
+}
+
+.footer-text,
+.contact-items,
+.footer-socials {
+    padding-inline: 1rem;
+}
+
+.footer-text h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.footer-text p {
+    margin-bottom: 1rem;
+}
+
+.contact-items {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 0.75rem 1rem;
+}
+
+.contact-items svg {
+    fill: var(--white);
+}
+
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding-bottom: 3rem;
+}
+
+.footer-image-container img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+
+/* ---------- Tablet (768px and up) ---------- */
+@media (min-width: 768px) {
+    .hero {
+        padding: 2.5rem 2rem 4rem;
+    }
+
+    .hero-bg {
+        height: 29rem;
+        clip-path: polygon(0 0, 100% 0, 100% 55%, 0 100%);
+    }
+
+    .hero-image-container {
+        float: left;
+        width: 46%;
+        max-width: none;
+        margin: 0 1.5rem 1rem 0;
+    }
+
+    .hero-image-container img {
+        aspect-ratio: 9 / 10;
+    }
+
+    .hero-image-container h1 {
+        top: 1.5rem;
+        bottom: auto;
+        left: 85%;
+        font-size: 3.5rem;
+        white-space: nowrap;
+    }
+
+    .about-content {
+        margin: 6rem 3rem 0 3rem;
+        padding: 2rem;
+        background-color: var(--white);
+        box-shadow: var(--card-shadow);
+    }
+
+    .about-content h2 {
+        font-size: 2.5rem;
+    }
+
+    .social-links {
+        justify-content: flex-end;
+        clear: none;
+    }
+
+    /* ----- Work ----- */
+
+    .work {
+        padding: 3rem 2rem 5rem;
+    }
+
+    .work h2 {
+        text-align: left;
+    }
+
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+    }
+
+    /* ----- Footer ----- */
+
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 2rem;
+        row-gap: 1.5rem;
+        padding: 3rem 2rem;
+        align-content: start;
+    }
+
+    .footer-text,
+    .contact-items,
+    .footer-socials {
+        grid-column: 1;
+        padding-inline: 0;
+    }
+
+    .footer-image-container {
+        grid-column: 2;
+        grid-row: 1 / span 3;
+    }
+
+    .footer-image-container img {
+        height: 100%;
+        aspect-ratio: 5 / 7;
+    }
+}
+
+/* ---------- Desktop (1024px and up) ---------- */
+@media (min-width: 1024px) {
+
+    /* Content stays ~1200px wide and centered, but backgrounds (teal) stay full width */
+    :root {
+        --page-pad: max(2rem, calc((100% - 75rem) / 2));
+    }
+
+    /* ----- Hero ----- */
+
+    .hero {
+        display: grid;
+        grid-template-columns: 5fr 7fr;
+        /* photo | card */
+        padding: 4rem var(--page-pad) 6rem;
+    }
+
+    .hero-bg {
+        height: 44rem;
+        clip-path: polygon(0 0, 100% 0, 100% 54%, 0 100%);
+    }
+
+    /* undo the tablet float: photo is now a normal grid cell */
+    .hero-image-container {
+        float: none;
+        width: auto;
+        margin: 0;
+        min-height: 33rem;
+    }
+
+    .hero-image-container img {
+        height: 100%;
+        aspect-ratio: auto;
+    }
+
+    /* name goes back to the bottom-left of the photo */
+    .hero-image-container h1 {
+        top: auto;
+        bottom: 1rem;
+        left: 1.5rem;
+        font-size: 4.5rem;
+    }
+
+    /* card butts up against the photo, starting a bit lower */
+    .about-content {
+        display: flex;
+        flex-direction: column;
+        align-self: start;
+        min-height: 28rem;
+        margin: 3.75rem 0 0;
+        padding: 2.5rem;
+        text-align: left;
+    }
+
+    .social-links {
+        margin-top: auto;
+        /* icons sit at the bottom-right of the card */
+        padding-top: 1.5rem;
+    }
+
+    /* ----- Work ----- */
+
+    .work {
+        padding: 4rem var(--page-pad) 6rem;
+    }
+
+    .cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+    }
+
+    /* ----- Footer ----- */
+
+    .footer-content {
+        grid-template-columns: 1fr 1.5fr;
+        column-gap: 3rem;
+        padding: 4rem var(--page-pad);
+    }
+
+    .footer-text h2 {
+        font-size: 2.5rem;
+    }
+
+    .footer-image-container img {
+        height: auto;
+        aspect-ratio: 4 / 3;
+    }
 }
